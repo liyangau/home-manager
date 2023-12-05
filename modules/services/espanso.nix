@@ -100,7 +100,6 @@ in {
 
   config = mkIf cfg.enable {
     assertions = [
-      (assertPlatform "services.espanso" pkgs platforms.linux)
       {
         assertion = versionAtLeast espansoVersion "2";
         message = ''
