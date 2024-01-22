@@ -15,7 +15,7 @@
       };
     };
     hotkey = {
-      hotKey = {
+      hotKeys = {
         shift-0 = {
           shortCut = "Shift-0";
           description = "Viewing pods";
@@ -51,9 +51,9 @@
         };
       };
     };
-    aliases = { alias = { pp = "v1/pods"; }; };
+    aliases = { aliases = { pp = "v1/pods"; }; };
     plugin = {
-      plugin = {
+      plugins = {
         fred = {
           shortCut = "Ctrl-L";
           description = "Pod logs";
@@ -66,11 +66,9 @@
       };
     };
     views = {
-      k9s = {
-        views = {
-          "v1/pods" = {
-            columns = [ "AGE" "NAMESPACE" "NAME" "IP" "NODE" "STATUS" "READY" ];
-          };
+      views = {
+        "v1/pods" = {
+          columns = [ "AGE" "NAMESPACE" "NAME" "IP" "NODE" "STATUS" "READY" ];
         };
       };
     };

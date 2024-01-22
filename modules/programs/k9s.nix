@@ -69,7 +69,7 @@ in {
         <https://k9scli.io/topics/aliases/> for supported values.
       '';
       example = literalExpression ''
-        alias = {
+        aliases = {
           # Use pp as an alias for Pod
           pp = "v1/pods";
         };
@@ -84,14 +84,12 @@ in {
         <https://k9scli.io/topics/hotkeys/> for supported values.
       '';
       example = literalExpression ''
-        hotkey = {
-          # Make sure this is camel case
-          hotKey = {
-            shift-0 = {
-              shortCut = "Shift-0";
-              description = "Viewing pods";
-              command = "pods";
-            };
+        # Make sure this is camel case
+        hotKeys = {
+          shift-0 = {
+            shortCut = "Shift-0";
+            description = "Viewing pods";
+            command = "pods";
           };
         };
       '';
@@ -105,7 +103,7 @@ in {
         <https://k9scli.io/topics/plugins/> for supported values.
       '';
       example = literalExpression ''
-        plugin = {
+        plugins = {
           # Defines a plugin to provide a `ctrl-l` shortcut to
           # tail the logs while in pod view.
           fred = {
@@ -136,19 +134,17 @@ in {
         See <https://k9scli.io/topics/columns/> for supported values.
       '';
       example = literalExpression ''
-        k9s = {
-          views = {
-            "v1/pods" = {
-              columns = [
-                "AGE"
-                "NAMESPACE"
-                "NAME"
-                "IP"
-                "NODE"
-                "STATUS"
-                "READY"
-              ];
-            };
+        views = {
+          "v1/pods" = {
+            columns = [
+              "AGE"
+              "NAMESPACE"
+              "NAME"
+              "IP"
+              "NODE"
+              "STATUS"
+              "READY"
+            ];
           };
         };
       '';
@@ -178,11 +174,11 @@ in {
         source = yamlFormat.generate "k9s-aliases" cfg.aliases;
       };
 
-      "k9s/hotkey.yaml" = mkIf (cfg.hotkey != { }) {
+      "k9s/hotkeys.yaml" = mkIf (cfg.hotkey != { }) {
         source = yamlFormat.generate "k9s-hotkey" cfg.hotkey;
       };
 
-      "k9s/plugin.yaml" = mkIf (cfg.plugin != { }) {
+      "k9s/plugins.yaml" = mkIf (cfg.plugin != { }) {
         source = yamlFormat.generate "k9s-plugin" cfg.plugin;
       };
 
